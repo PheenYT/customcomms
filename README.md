@@ -16,3 +16,4 @@ This is not a drag and drop addon! If you want desired results you have to edit 
 3. Go to customcomms/lua/darkrp_modules/customcomms.
 4. Open sv_init.lua using any program that can edit lua files.
 5. Edit the table called Blacklist to your jobs that shouldn't see this private chat.
+6. Restart.
