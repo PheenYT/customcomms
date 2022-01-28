@@ -4,24 +4,23 @@ local rc_col2 = Color(0, 191, 255)
 local useTeamColors = false -- Use team color for everything up to the name.
 
 
-hook.Add( "postLoadCustomDarkRPItems", "LoadBlacklist", function()
-    Blacklist = {
-        [TEAM_CIV] = true,
-        [TEAM_CITIZEN] = true,
-        [TEAM_POLICE] = true,
-        [TEAM_GANG] = true
-    }
+hook.Add( "postLoadCustomDarkRPItems", "LoadCommsBlacklist", function()
+	print("[customcomms] Attempting Blacklist!")
+	commsBlacklist = {
+		[TEAM_MOBBOSS] = true,
+		[TEAM_MAYOR] = true,
+	} -- if ANY of the previous job indexes are wrong the entire addon stops working and will only produce errors in console!
+	PrintTable(commsBlacklist)
+	print("[customcomms] Blacklist Succeeded!")
 end)
 
 local function republiccomms(sender, args)
 	if args == "" then
-		DarkRP.notify(sender, 1, 4, "You have to put in actual text!")
-		PrintMessage(3, "You have to put in actual text!")
+		DarkRP.notify(sender, 1, 4, "Missing argument: text!")
 		return ""
 	end
-	if Blacklist[sender:Team()] then
+	if commsBlacklist[sender:Team()] then
 		DarkRP.notify(sender, 1, 4, "Wrong Job!")
-		PrintMessage(3, "Wrong Job!")
 		return ""
 	end
 	if useTeamColors then
@@ -31,7 +30,7 @@ local function republiccomms(sender, args)
 	local name = sender:Nick()
 	local DoSay = function(text)
 		for _, v in ipairs(player.GetAll()) do
-			if not Blacklist[v:Team()] then
+			if not commsBlacklist[v:Team()] then
 				DarkRP.talkToPerson(v, rc_col1, "(Republic) " .. name, rc_col2, text, sender)
 			else
 				return ""
