@@ -4,7 +4,7 @@ Garry's Mod Addon
 
 Job based anti metagaming custom comms for StarwarsRP, can be expanded to MilitaryRP
 
-! This hasn't been tested on an open server or with multiple people. !
+Has been tested with 2 people!
 
 Depends on DarkRP!
 
