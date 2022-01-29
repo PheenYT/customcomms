@@ -20,7 +20,7 @@ local function republiccomms(sender, args)
 		return ""
 	end
 	if commsBlacklist[sender:Team()] then
-		DarkRP.notify(sender, 1, 4, "Wrong Job!")
+		DarkRP.notify(sender, 1, 4, "Blacklisted job!")
 		return ""
 	end
 	if useTeamColors then
@@ -32,8 +32,6 @@ local function republiccomms(sender, args)
 		for _, v in ipairs(player.GetAll()) do
 			if not commsBlacklist[v:Team()] then
 				DarkRP.talkToPerson(v, rc_col1, "(Republic) " .. name, rc_col2, text, sender)
-			else
-				return ""
 			end
 		end
 	end
